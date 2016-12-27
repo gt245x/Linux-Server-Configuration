@@ -26,7 +26,7 @@ In the terminal, ssh to ther server by:
 
 
 ##2. Create new user with permission to sudo
-References for the procedure/steps for creating new user with permission to sudo can be found [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart)
+Reference for the procedure/steps for creating new user with permission to sudo can be found [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart)
 
 Once ssh to the server, adduser called grader
 
@@ -97,7 +97,7 @@ Locate the following line:
 
         PermitRootLogin yes
 
-Change the value 'yes' to 'no'
+Change the value 'yes' to 'no' to disable root login
 
 Restart the sshd service by running the following command:
 
@@ -377,7 +377,8 @@ Next, clone catalog project repository from Github
 
         https://github.com/gt245x/Catalog.git
 
-Move the contents of catalog project to the catalog directory and delete the empty directory 
+Move the contents of catalog project to the catalog directory and delete the empty directory.
+
 Disable .git directory by using .htaccess
 
 cd to the root of the catlog app
@@ -473,11 +474,11 @@ More tutorial on postgres installation and setup can be found [here](https://www
 
 cd to /var/www/catalog/catalog
 
-Change the project.py name to __init__.py
+Change the project.py name to -init-.py
 
         mv project.py __init__.py
 
-Open the __init__.py file and change the engine = create engine... line. Change from sqlite to postgressql:
+Open the -init-.py file and change the engine = create engine... line. Change from sqlite to postgresql:
 
         engine = create_engine('postgresql://catalog:db-password@localhost/catalog')
 
@@ -505,7 +506,7 @@ Create the postgresql database
 
 Populate the postgresql database
 
->       python lotsofitems.py
+        python lotsofitems.py
 
 
 ##13 Run catalog application
@@ -547,6 +548,7 @@ Various additional functionality are needed for the proper function of the serve
 
 ###Error logs
 [source](https://www.a2hosting.com/kb/developer-corner/apache-web-server/viewing-apache-log-files)
+
 The error logs is where Apache records information about any errors or anomalies it encounters. To view the last 100 lines in the error log:
 
         sudo tail -100 /etc/httpd/logs/error_log
@@ -563,6 +565,7 @@ Apache uses the access log files to record information about every visitor to th
 ### How to fix Apache - Could not reliably determine the server's fully qualified domain, using 127.0.1.1 for ServerName
 
 To fix this issue:
+
         sudo nano /etc/apache2/apache2.conf
 
 Add ServerName localhost in the very end of the file.

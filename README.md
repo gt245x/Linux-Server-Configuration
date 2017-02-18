@@ -24,7 +24,6 @@ In the terminal, ssh to ther server by:
 
         ssh -i ~/.ssh/udacity_key.rsa root@35.166.142.174
 
-
 ##2. Create new user with permission to sudo
 Reference for the procedure/steps for creating new user with permission to sudo can be found [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart)
 
@@ -55,7 +54,6 @@ Verify that the grader has sudo account by prepending 'sudo' to the command that
 
 The first time you use sudo in a session, you will be prompted for the password of the user account. Enter the password to proceed.
 
-
 ##3. Update all installed packages
 To update installed packages, first get information on the newest versions of packages and their dependencies
 
@@ -76,7 +74,6 @@ Install software finger
 Automatic updates can be installed as shown by this [documentation](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)
 
         sudo apt install unattended-upgrades
-
 
 ##4 Change the SSH port from 22 to 2200 and disable root login
 Procedure on SSH is detailed [here](https://www.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306)
@@ -102,7 +99,6 @@ Change the value 'yes' to 'no' to disable root login
 Restart the sshd service by running the following command:
 
         service sshd restart
-
 
 ##5 Configure UFW
 Verify that firewall is inactive by:
@@ -133,7 +129,6 @@ Allow NTP on port 123
 
         sudo ufw allow 123
 
-
 ##6. Configure the local timezone to UTC
 [Source](https://help.ubuntu.com/community/UbuntuTime#Using_the_Command_Line_.28terminal.29)
 
@@ -142,7 +137,6 @@ Type the following on the command line
         sudo dpkg-reconfigure tzdata
 
 Follow the directions to select UTC timezone
-
 
 ##7. Install and configure Apache to serve a Python mod_wsgi application
 Procedure on installation and configuration is located [here](http://blog.udacity.com/2015/03/step-by-step-guide-install-lamp-linux-apache-mysql-python-ubuntu.html)
@@ -160,7 +154,6 @@ Install mod-wsgi tool and python-setuptools for serving python applications
 Restart apache server after installation
 
         sudo service apache2 restart
-
 
 ##8. Install and configure Git
 The steps for installing and configuring git are shown [here](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04#how-to-set-up-git)
@@ -184,7 +177,6 @@ We can see all of the configuration items that have been set by typing:
 The git info is stored in the configuration file, which can be optionally edited by:
 
         nano ~/.gitconfig
-
 
 ##9. How to Deploy a Flask Application on an Ubuntu VPS
 The steps for deploying a flask application are shown [here](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) and [here](https://www.youtube.com/watch?v=bMEAtCuFoiw). The deployment will serve to ensure that the App is correctly deployed before the catalog peoject is deployed.
@@ -282,7 +274,6 @@ To deactivate the environment, give the following command:
 
         deactivate
 
-
 ###Step Four - Configure and Enable a New Virtual Host
 
 Issue the following command in your terminal for newer versions of Ubuntu: 
@@ -315,7 +306,6 @@ Enable the virtual host with the following command:
 
         sudo a2ensite CatalogApp
 
-
 ###Step Five - Create the .wsgi File
 
 Apache uses the .wsgi file to serve the Catalog app. Move to the /var/www/CatalogApp directory and create a file named catalogapp.wsgi with following commands:
@@ -343,7 +333,6 @@ Now your directory structure should look like this:
         |-----------------------venv
         |-----------------------__init__.py
         |----------------catalogapp.wsgi
-
 
 ###Step Six - Restart Apache
 
@@ -392,7 +381,6 @@ create a .htaccess file
 Paste the following into the .htaccess file and save. It works for all .git directories on the server.
 
         Redirect 404 /\.git
-
 
 ###Install packages
 Follow procedure in section 9. Activate the virtual environment to download the packages.
@@ -484,17 +472,14 @@ Open the -init-.py file and change the engine = create engine... line. Change fr
 
 As discussed on the [forum](https://discussions.udacity.com/t/client-secret-json-not-found-error/34070). Update the absolute path for client_secrets.json
 
-
         CLIENT_ID = json.loads(open(r'/var/www/catalog/catalog/client_secrets.json', 'r').read())['web']['client_id']
 
         oauth_flow = flow_from_clientsecrets(r'/var/www/catalog/catalog/client_secrets.json', scope='')
-   
-
+ 
 Update the absolute path for fb_client_secrets.json
 
         app_id = json.loads(open(r'/var/www/catalog/catalog/fb_client_secrets.json', 'r').read())[
         'web']['app_id']
-
 
 Open the catalog_database.py file and change the engine = create engine... line
 
